@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class QDate {
     static Calendar azerbaijanCalendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Baku"));
-
+    
     public static String getCurrentYear() {
         String st = String.valueOf(azerbaijanCalendar.get(Calendar.YEAR));
         if (st.length() == 1) {

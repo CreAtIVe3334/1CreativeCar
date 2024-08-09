@@ -28,5 +28,4 @@ public class Users extends CoreEntity {
 
     @OneToMany(mappedBy = "user")
     List<Order> orders;
-
 }
