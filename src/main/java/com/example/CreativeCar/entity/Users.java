@@ -1,23 +1,21 @@
 package com.example.CreativeCar.entity;
 
 import com.example.CreativeCar.enums.Role;
+import com.example.CreativeCar.utility.core_entity.CoreEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
+@Entity
+@SuperBuilder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@ToString
-@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Users {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+public class Users extends CoreEntity {
     @Column(nullable = false, unique = true)
     String username;
     String name;
@@ -30,7 +28,5 @@ public class Users {
 
     @OneToMany(mappedBy = "user")
     List<Order> orders;
-
-
 
 }
