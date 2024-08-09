@@ -27,5 +27,8 @@ public class Users extends CoreEntity {
     Role role;
 
     @OneToMany(mappedBy = "user")
+    List<Apeal> apeals;
+
+    @OneToMany(mappedBy = "user")
     List<Order> orders;
 }
