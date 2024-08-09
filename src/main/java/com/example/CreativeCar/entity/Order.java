@@ -1,9 +1,8 @@
-package com.example._CreativeCar.entity;
+package com.example.CreativeCar.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.apache.catalina.User;
 
 import java.time.LocalDateTime;
 
