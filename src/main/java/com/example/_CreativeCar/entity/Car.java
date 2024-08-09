@@ -1,4 +1,4 @@
-package com.example.CreativeCar.entity;
+package com.example._CreativeCar.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
