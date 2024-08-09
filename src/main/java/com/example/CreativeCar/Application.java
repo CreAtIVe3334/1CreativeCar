@@ -1,4 +1,4 @@
-package com.example._CreativeCar;
+package com.example.CreativeCar;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

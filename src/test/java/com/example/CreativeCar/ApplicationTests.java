@@ -1,4 +1,4 @@
-package com.example._CreativeCar;
+package com.example.CreativeCar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
