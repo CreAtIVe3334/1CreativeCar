@@ -4,5 +4,7 @@ import com.example.CreativeCar.entity.Car;
 
 public class CarMapper {
 
-    public static Car dtoToCar()
+    public static Car dtoToCar(){
+        return null;
+    }
 }
