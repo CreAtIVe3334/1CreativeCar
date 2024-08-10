@@ -35,6 +35,10 @@ public class LikeService {
         Users user = userService.getUserById(userId);
         Car car = carService.getCarById(carId);
         Optional<Like> like = likeRepository.findByCarAndUser(car,user);
-        likeRepository.delete(like);
+        if(like.isPresent()){
+            Like like1 = like.get();
+            likeRepository.delete(like1);
+        }
+
     }
 }

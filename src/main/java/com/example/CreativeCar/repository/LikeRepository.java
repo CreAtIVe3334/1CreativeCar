@@ -11,5 +11,5 @@ public interface LikeRepository extends JpaRepository<Like, Long> {
     
     Optional<Like> findByCarAndUser(Car car, Users user);
 
-    void delete(Optional<Like> like);
+    void delete(Like like);
 }
