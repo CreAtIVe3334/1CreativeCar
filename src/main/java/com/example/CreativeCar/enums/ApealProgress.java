@@ -1,5 +1,5 @@
 package com.example.CreativeCar.enums;
 
 public enum ApealProgress {
-    ACCEPTED, REJECTED
+    ACCEPTED, REJECTED, PROGRESS, CONTINUE
 }

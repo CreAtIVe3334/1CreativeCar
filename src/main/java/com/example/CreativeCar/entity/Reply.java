@@ -26,4 +26,8 @@ public class Reply extends CoreEntity {
     Comment comment;
 
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    Users user;
+
 }
