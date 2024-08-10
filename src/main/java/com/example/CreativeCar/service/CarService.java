@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -14,8 +15,8 @@ public class CarService {
     private CarRepository carRepository;
 
     public Car getCarById(Long id) {
-        var car = carRepository.getById(id);
-        return car;
+       return carRepository.findByIdAndStatus(id,"A").orElse(null);
+
     }
 
     public Car createCar(Car car) {
