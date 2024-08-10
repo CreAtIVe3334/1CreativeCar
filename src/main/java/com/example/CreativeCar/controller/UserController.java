@@ -19,7 +19,7 @@ public class UserController {
 
     @PostMapping("create")
     public ResponseEntity<Users> createUser(@RequestBody CreateUserDTO user) {
-        return ResponseEntity.ok(userService.save(user));
+         return ResponseEntity.ok(userService.save(user));
 
     }
 }
