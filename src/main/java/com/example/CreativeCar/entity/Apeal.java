@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Apeal extends CoreEntity {
+public class Apeal extends CoreEntity { //Muraciet
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

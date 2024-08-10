@@ -31,4 +31,5 @@ public class Comment extends CoreEntity {
 
     @OneToMany(mappedBy = "comment")
     List<Reply> replies;
+
 }

@@ -35,5 +35,11 @@ public class Users extends CoreEntity {
     @OneToMany(mappedBy = "user")
     List<Like> likes;
 
+    @OneToMany(mappedBy = "user")
+    List<Comment> comments;
+
+    @OneToMany(mappedBy = "user")
+    List<Reply> replies;
+
 
 }
