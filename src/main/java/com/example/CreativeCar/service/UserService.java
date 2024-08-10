@@ -23,6 +23,6 @@ public class UserService {
     }
 
     public Users getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findByIdAndStatus(id,"A").orElse(null);
     }
 }
