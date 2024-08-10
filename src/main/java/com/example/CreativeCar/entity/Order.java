@@ -26,7 +26,6 @@ public class Order extends CoreEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     Users user;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     Car car;

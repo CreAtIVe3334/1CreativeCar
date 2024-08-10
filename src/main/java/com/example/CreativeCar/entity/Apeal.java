@@ -1,10 +1,8 @@
 package com.example.CreativeCar.entity;
 
+import com.example.CreativeCar.enums.ApealProgress;
 import com.example.CreativeCar.utility.core_entity.CoreEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,4 +21,7 @@ public class Apeal extends CoreEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     Users user;
+
+    @Enumerated(EnumType.STRING)
+    ApealProgress apealProgress;
 }
