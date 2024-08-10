@@ -3,6 +3,8 @@ package com.example.CreativeCar.utility;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -304,5 +306,13 @@ public class QDate {
         TimeUnit timeUnit = TimeUnit.SECONDS;
         long diffInMillies = date2.getTime() - date1.getTime();
         return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
+    }
+
+    public static LocalDateTime startDateToLocalDateTime(LocalDate date) {
+        return date.atTime(0, 0, 0);
+    }
+
+    public static LocalDateTime endDateToLocalDateTime(LocalDate date) {
+        return date.atTime(23, 59, 59);
     }
 }
