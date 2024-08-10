@@ -1,7 +1,7 @@
 package com.example.CreativeCar.mapper;
 
-import com.example.CreativeCar.dto.CreateUserDTO;
-import com.example.CreativeCar.dto.GetUserDTO;
+import com.example.CreativeCar.dto.Users.CreateUserDTO;
+import com.example.CreativeCar.dto.Users.GetUserDTO;
 import com.example.CreativeCar.entity.Car;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.enums.Role;

@@ -1,4 +1,4 @@
-package com.example.CreativeCar.dto;
+package com.example.CreativeCar.dto.Users;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

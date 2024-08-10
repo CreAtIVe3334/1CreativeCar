@@ -1,5 +1,8 @@
-package com.example.CreativeCar.dto;
+package com.example.CreativeCar.dto.Users;
 
+import com.example.CreativeCar.enums.Role;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -8,10 +11,11 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CreateUserDTO {
+public class UpdateUserDTO {
     String username;
     String name;
     String email;
     String phone;
     String licence;
+    Double balance;
 }
