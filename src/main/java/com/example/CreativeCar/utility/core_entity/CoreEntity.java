@@ -18,9 +18,9 @@ import java.io.Serializable;
 @MappedSuperclass
 public class CoreEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    String id;
+    Long id;
     @Column(name = "created_time", nullable = false)
     Long createdTime;
     @Column(name = "status", nullable = false)

@@ -1,0 +1,30 @@
+package com.example.CreativeCar.service;
+
+import com.example.CreativeCar.entity.Car;
+import com.example.CreativeCar.entity.Like;
+import com.example.CreativeCar.entity.Users;
+import com.example.CreativeCar.repository.LikeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class LikeService {
+    @Autowired
+    private LikeRepository likeRepository;
+
+    @Autowired
+    private CarService carService;
+
+    @Autowired
+    private UserService userService;
+
+    public Like save(Long userId,Long carId) {
+        Users user = userService.getUserById(userId);
+        Car car = carService.getCarById(carId);
+        Like like = Like.builder()
+                .user(user)
+                .car(car)
+                .build();
+        return likeRepository.save(like);
+    }
+}

@@ -24,8 +24,13 @@ public class Car extends CoreEntity {
     Double price;
     String picture;
 
+    @OneToMany(mappedBy = "car")
+    List<Like> likes;
 
     @OneToMany(mappedBy = "car")
     List<Order> orders;
+
+    @OneToMany(mappedBy = "car")
+    List<Comment> comments;
 
 }
