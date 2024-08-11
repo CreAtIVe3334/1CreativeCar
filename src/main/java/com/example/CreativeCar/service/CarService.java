@@ -1,6 +1,7 @@
 package com.example.CreativeCar.service;
 
 import com.example.CreativeCar.dto.car.CarUpdateRequestDto;
+import com.example.CreativeCar.dto.car.CreateCarRequestDto;
 import com.example.CreativeCar.entity.Car;
 import com.example.CreativeCar.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class CarService {
     }
 
 
-    public Car createCar(org.example.clone.CreateCarRequestDto createCarRequest) {
+    public Car createCar(CreateCarRequestDto createCarRequest) {
         Car car = Car.builder()
                 .brand(createCarRequest.getBrand())
                 .model(createCarRequest.getModel())

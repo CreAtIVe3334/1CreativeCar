@@ -1,6 +1,7 @@
 package com.example.CreativeCar.controller;
 
 import com.example.CreativeCar.dto.car.CarUpdateRequestDto;
+import com.example.CreativeCar.dto.car.CreateCarRequestDto;
 import com.example.CreativeCar.entity.Car;
 import com.example.CreativeCar.service.CarService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class CarController {
     }
 
     @PostMapping
-    public Car createCar(@RequestBody org.example.clone.CreateCarRequestDto createCarRequest) {
+    public Car createCar(@RequestBody CreateCarRequestDto createCarRequest) {
         return carService.createCar(createCarRequest);
     }
 
