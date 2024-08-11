@@ -1,14 +1,12 @@
 package com.example.CreativeCar.controller;
 
 import com.example.CreativeCar.dto.Users.CreateUserDTO;
+import com.example.CreativeCar.dto.Users.GetUserDTO;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -20,6 +18,17 @@ public class UserController {
     @PostMapping("create")
     public ResponseEntity<Users> createUser(@RequestBody CreateUserDTO user) {
          return ResponseEntity.ok(userService.save(user));
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+        userService.delete(userId);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<GetUserDTO> getUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.getUserDTOById(userId));
     }
 
 

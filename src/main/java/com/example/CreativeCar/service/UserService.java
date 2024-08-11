@@ -1,11 +1,14 @@
 package com.example.CreativeCar.service;
 
 import com.example.CreativeCar.dto.Users.CreateUserDTO;
+import com.example.CreativeCar.dto.Users.GetUserDTO;
 import com.example.CreativeCar.dto.Users.UpdateUserDTO;
 import com.example.CreativeCar.entity.Users;
-import com.example.CreativeCar.mapper.user.impl.UserUpdateMapperImpl;
-import com.example.CreativeCar.mapper.user.inter.UserCreateMapper;
+import com.example.CreativeCar.mapper.user.UserCreateMapper;
+import com.example.CreativeCar.mapper.user.UserGetMapper;
+import com.example.CreativeCar.mapper.user.UserUpdateMapper;
 import com.example.CreativeCar.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,20 +17,22 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
-    private UserCreateMapper userCreateMapper;
-
+    private  UserRepository userRepository;
 
     public Users save(CreateUserDTO createUserDTO) {
-        Users user = userCreateMapper.dtoToEntity(createUserDTO);
+        Users user = UserCreateMapper.dtoToEntity(createUserDTO);
         return userRepository.save(user);
     }
 
     public Users getUserById(Long id) {
-        return userRepository.findByIdAndStatus(id,"A").orElse(null);
+      return userRepository.findByIdAndStatus(id,"A").orElse(null);
+    }
+
+    public GetUserDTO getUserDTOById(Long id) {
+        Users user = getUserById(id);
+        return UserGetMapper.entityToDto(user);
     }
 
     public void delete(Long id) {
@@ -44,7 +49,7 @@ public class UserService {
     }
 
     public Users updateUser(UpdateUserDTO updateUserDTO) {
-        Users user = UserUpdateMapperImpl.dtoToEntity(updateUserDTO);
+        Users user = UserUpdateMapper.dtoToEntity(updateUserDTO);
         return userRepository.save(user);
     }
 }

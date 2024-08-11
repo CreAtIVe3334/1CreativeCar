@@ -5,10 +5,7 @@ import com.example.CreativeCar.service.LikeService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/like")
@@ -21,5 +18,11 @@ public class LikeController {
     @Transactional
     public ResponseEntity<Like> like(@PathVariable Long userId, @PathVariable Long carId){
         return ResponseEntity.ok(likeService.save(userId, carId));
+    }
+
+    @DeleteMapping("/{userId}/{carId}")
+    public ResponseEntity<Void> delete(@PathVariable Long userId, @PathVariable Long carId){
+        likeService.delete(userId, carId);
+        return ResponseEntity.ok().build();
     }
 }
