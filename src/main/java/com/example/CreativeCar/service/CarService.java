@@ -14,12 +14,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CarService {
-
     private final CarRepository carRepository;
-
-    public List<Car> getAllCars() {
-        return carRepository.findAllCarByStatus("A");
-    }
 
 
     public Car createCar(CreateCarRequestDto createCarRequest) {
