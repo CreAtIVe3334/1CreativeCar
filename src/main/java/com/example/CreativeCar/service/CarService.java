@@ -61,6 +61,7 @@ public class CarService {
     public void deleteCarById(Long carId) {
        Car car = carRepository.findByIdAndStatus(carId,"A").orElse(null);
         car.setStatus("D");
+        carRepository.save(car);
     }
 
 }
