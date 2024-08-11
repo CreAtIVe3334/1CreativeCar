@@ -3,8 +3,8 @@ package com.example.CreativeCar.service;
 import com.example.CreativeCar.dto.Users.CreateUserDTO;
 import com.example.CreativeCar.dto.Users.UpdateUserDTO;
 import com.example.CreativeCar.entity.Users;
-import com.example.CreativeCar.mapper.user.UserCreateMapper;
-import com.example.CreativeCar.mapper.user.UserUpdateMapper;
+import com.example.CreativeCar.mapper.user.impl.UserUpdateMapperImpl;
+import com.example.CreativeCar.mapper.user.inter.UserCreateMapper;
 import com.example.CreativeCar.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserCreateMapper userCreateMapper;
+
+
     public Users save(CreateUserDTO createUserDTO) {
-        Users user = UserCreateMapper.dtoToEntity(createUserDTO);
+        Users user = userCreateMapper.dtoToEntity(createUserDTO);
         return userRepository.save(user);
     }
 
@@ -40,7 +44,7 @@ public class UserService {
     }
 
     public Users updateUser(UpdateUserDTO updateUserDTO) {
-        Users user = UserUpdateMapper.dtoToEntity(updateUserDTO);
+        Users user = UserUpdateMapperImpl.dtoToEntity(updateUserDTO);
         return userRepository.save(user);
     }
 }
