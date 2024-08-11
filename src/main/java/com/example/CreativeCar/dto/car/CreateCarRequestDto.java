@@ -1,5 +1,3 @@
-package org.example.clone;
-
 import lombok.Builder;
 import lombok.Data;
 

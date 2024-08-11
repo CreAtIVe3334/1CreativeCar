@@ -1,6 +1,6 @@
 package com.example.CreativeCar.controller;
 
-import com.example.CreativeCar.dto.CreateUserDTO;
+import com.example.CreativeCar.dto.Users.CreateUserDTO;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,7 @@ public class UserController {
     @PostMapping("create")
     public ResponseEntity<Users> createUser(@RequestBody CreateUserDTO user) {
          return ResponseEntity.ok(userService.save(user));
-
     }
+
+
 }

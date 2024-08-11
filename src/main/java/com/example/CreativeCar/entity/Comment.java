@@ -1,6 +1,7 @@
 package com.example.CreativeCar.entity;
 
 import com.example.CreativeCar.utility.core_entity.CoreEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -23,12 +24,15 @@ public class Comment extends CoreEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     Users user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
+    @JsonIgnore
     Car car;
 
     @OneToMany(mappedBy = "comment")
     List<Reply> replies;
+
 }
