@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CreateOderDTO {
+public class CreateOrderDTO {
 
     LocalDate startTime;
 

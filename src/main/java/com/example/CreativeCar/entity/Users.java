@@ -22,6 +22,7 @@ public class Users extends CoreEntity {
     String email;
     String phone;
     String licence;
+    String password;
     Double balance;
     @Enumerated(EnumType.STRING)
     Role role;
