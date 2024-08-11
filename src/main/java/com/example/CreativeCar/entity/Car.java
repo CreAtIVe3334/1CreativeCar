@@ -1,5 +1,6 @@
 package com.example.CreativeCar.entity;
 
+import com.example.CreativeCar.enums.CarOrder;
 import com.example.CreativeCar.utility.core_entity.CoreEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +24,8 @@ public class Car extends CoreEntity {
     Integer year;
     Double price;
     String picture;
+    @Enumerated(EnumType.STRING)
+    CarOrder carOrder;
 
     @OneToMany(mappedBy = "car")
     List<Like> likes;

@@ -1,9 +1,9 @@
-package com.example.CreativeCar.mapper.user;
+package com.example.CreativeCar.mapper.user.impl;
 
 import com.example.CreativeCar.dto.Users.UpdateUserDTO;
 import com.example.CreativeCar.entity.Users;
 
-public class UserUpdateMapper {
+public class UserUpdateMapperImpl {
 
     public static Users dtoToEntity(UpdateUserDTO updateUserDTO) {
         return Users.builder()
