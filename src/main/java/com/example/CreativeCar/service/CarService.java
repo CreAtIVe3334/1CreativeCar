@@ -14,7 +14,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CarService {
-
     private final CarRepository carRepository;
 
     public List<Car> getAllCars() {
@@ -39,7 +38,7 @@ public class CarService {
     }
 
     public Car getCarById(Long id) {
-       return carRepository.findByIdAndStatus(id,"A").orElse(null);
+        return carRepository.findByIdAndStatus(id,"A").orElse(null);
 
     }
 
@@ -59,8 +58,9 @@ public class CarService {
     }
 
     public void deleteCarById(Long carId) {
-       Car car = carRepository.findByIdAndStatus(carId,"A").orElse(null);
+        Car car = carRepository.findByIdAndStatus(carId,"A").orElse(null);
         car.setStatus("D");
+        carRepository.save(car);
     }
 
 }

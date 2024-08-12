@@ -11,6 +11,6 @@ import lombok.experimental.FieldDefaults;
 public class GetUserDTO {
     String name;
     Double balance;
-    String carName;
+    String username;
 
 }
