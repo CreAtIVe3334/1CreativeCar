@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CommentService {
@@ -26,16 +25,16 @@ public class CommentService {
 
 
 
-    public Optional<Comment> getCommentById(Long id) {
-        return commentRepository.findById(id);
+    public Comment getCommentById(Long id) {
+        return commentRepository.findByIdAndStatus( id);
     }
-
-    public Comment saveComment(CreateCommentDTO createCommentDTO,Long userId,Long carId) {
+    public Comment saveComment(CreateCommentDTO createCommentDTO, Long userId, Long carId) {
         Users user = userService.getUserById(userId);
         Car car = carService.getCarById(carId);
-        Comment comment = CommentCreateMapper.dtoToEntity(createCommentDTO,user,car);
+        Comment comment = CommentCreateMapper.dtoToEntity(createCommentDTO, user, car);
         return commentRepository.save(comment);
     }
+
 
 
 
@@ -45,5 +44,15 @@ public class CommentService {
         commentRepository.save(comment);
     }
 
+    public List<Comment> getCommentsByCarId(Long carId) {
+        return commentRepository.findActiveCommentsByCarId(carId);
+    }
 
+    public void updateCommentByCarAndUser(Long carId, Long userId, String newComment) {
+        commentRepository.updateCommentByCarAndUser(carId, userId, newComment);
+    }
+
+    public List<Comment> getCommentsByUserId(Long userId) {
+        return commentRepository.findCommentsByUserId(userId);
+    }
 }

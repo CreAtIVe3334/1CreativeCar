@@ -1,6 +1,10 @@
 package com.example.CreativeCar.service;
 
+import com.example.CreativeCar.dto.reply.CreateReplyDTO;
+import com.example.CreativeCar.entity.Comment;
 import com.example.CreativeCar.entity.Reply;
+import com.example.CreativeCar.entity.Users;
+import com.example.CreativeCar.mapper.reply.ReplyCreateMapper;
 import com.example.CreativeCar.repository.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +18,11 @@ public class ReplyService {
     @Autowired
     private ReplyRepository replyRepository;
 
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private CommentService commentService;
+
     public List<Reply> getAllReplies() {
         return replyRepository.findAll();
     }
@@ -22,13 +31,31 @@ public class ReplyService {
         return replyRepository.findById(id);
     }
 
-    public Reply saveReply(Reply reply) {
-        return replyRepository.save(reply);
+    public Reply saveReply(CreateReplyDTO createReplyDTO,Long commentId,Long userId) {
+        Comment comment=commentService.getCommentById(commentId);
+        Users user = userService.getUserById(userId);
+        Reply reply= ReplyCreateMapper.dtoToEntity(createReplyDTO,comment,user);
+    return replyRepository.save(reply);
     }
 
     public void deleteReply(Long id) {
-        replyRepository.deleteById(id);
+        Optional<Reply> replyOptional = replyRepository.findById(id);
+        if (replyOptional.isPresent()) {
+            Reply reply = replyOptional.get();
+            reply.setStatus("D");
+            replyRepository.save(reply);
+        } else {
+
+            throw new RuntimeException("Reply not found with id: " + id);
+        }
     }
 
+    public List<Reply> getRepliesByCommentId(Long commentId) {
+        return replyRepository.findRepliesByCommentId(commentId);
+    }
+
+    public List<Reply> getRepliesByUserId(Long userId) {
+        return replyRepository.findRepliesByUserId(userId);
+    }
 
 }
