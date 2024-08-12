@@ -1,6 +1,6 @@
 package com.example.CreativeCar.comment;
 
-import com.example.CreativeCar.dto.comment.CreateCommentDTO;
+//import com.example.CreativeCar.dto.comment.CreateCommentDTO;
 import com.example.CreativeCar.entity.Car;
 import com.example.CreativeCar.entity.Comment;
 import com.example.CreativeCar.entity.Users;
