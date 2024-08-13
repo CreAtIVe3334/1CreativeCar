@@ -10,7 +10,6 @@ import com.example.CreativeCar.mapper.user.UserGetMapper;
 import com.example.CreativeCar.mapper.user.UserUpdateMapper;
 import com.example.CreativeCar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,11 +18,10 @@ import static com.example.CreativeCar.enums.ExceptionMessage.NOT_FOUND;
 import static java.lang.String.format;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-
-    @Autowired
-    private  UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public Users save(CreateUserDTO createUserDTO) {
         Users user = UserCreateMapper.dtoToEntity(createUserDTO);

@@ -4,16 +4,17 @@ import com.example.CreativeCar.dto.Users.CreateUserDTO;
 import com.example.CreativeCar.dto.Users.GetUserDTO;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @PostMapping("create")
     public ResponseEntity<Users> createUser(@RequestBody CreateUserDTO user) {
@@ -30,6 +31,5 @@ public class UserController {
     public ResponseEntity<GetUserDTO> getUser(@PathVariable Long userId) {
         return ResponseEntity.ok(userService.getUserDTOById(userId));
     }
-
 
 }

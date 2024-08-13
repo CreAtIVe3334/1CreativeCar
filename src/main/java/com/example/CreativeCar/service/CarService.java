@@ -3,8 +3,9 @@ package com.example.CreativeCar.service;
 import com.example.CreativeCar.dto.car.CarUpdateRequestDto;
 import com.example.CreativeCar.dto.car.CreateCarRequestDto;
 import com.example.CreativeCar.entity.Car;
-import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.enums.CarOrder;
+import com.example.CreativeCar.mapper.car.CarCreateMapper;
+import com.example.CreativeCar.mapper.car.CarUpdateMapper;
 import com.example.CreativeCar.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,17 +24,7 @@ public class CarService {
 
 
     public Car createCar(CreateCarRequestDto createCarRequest) {
-        Car car = Car.builder()
-                .brand(createCarRequest.getBrand())
-                .model(createCarRequest.getModel())
-                .gear(createCarRequest.getGear())
-                .color(createCarRequest.getColor())
-                .engine(createCarRequest.getEngine())
-                .year(createCarRequest.getYear())
-                .price(createCarRequest.getPrice())
-                .picture(createCarRequest.getPicture())
-                .status("A")
-                .build();
+        Car car = CarCreateMapper.dtoToEntity(createCarRequest);
         return carRepository.save(car);
 
     }
@@ -53,16 +44,15 @@ public class CarService {
 
 
     public Car updateCar(Long carId, CarUpdateRequestDto carUpdateRequest) {
-        Optional<Car> car = carRepository.findById(carId);
-        if (car.isPresent()) {
-            Car updatedCar =car.get();
-            updatedCar.setColor(carUpdateRequest.getColor());
-            updatedCar.setEngine(carUpdateRequest.getEngine());
-            updatedCar.setGear(carUpdateRequest.getGear());
-            updatedCar.setPrice(carUpdateRequest.getPrice());
-            updatedCar.setPicture(carUpdateRequest.getPicture());
-            return carRepository.save(updatedCar);
+        Optional<Car> carOptional = carRepository.findByIdAndStatus(carId, "A");
+
+        if (carOptional.isPresent()) {
+            Car car = carOptional.get();
+            CarUpdateMapper.dtoToEntity(carUpdateRequest, car);
+
+            return carRepository.save(car);
         }
+
         return null;
     }
 

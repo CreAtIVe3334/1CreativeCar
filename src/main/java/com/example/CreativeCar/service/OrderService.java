@@ -12,6 +12,7 @@ import com.example.CreativeCar.mapper.car.CarUpdateMapper;
 import com.example.CreativeCar.mapper.order.OrderCreateMapper;
 import com.example.CreativeCar.mapper.order.OrderGetMapper;
 import com.example.CreativeCar.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +23,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
-    @Autowired
-    private CarService carService;
+    private final CarService carService;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     public Iterable<Order> findAll() {
         return orderRepository.findAll();

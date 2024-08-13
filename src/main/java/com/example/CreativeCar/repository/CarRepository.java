@@ -1,7 +1,6 @@
 package com.example.CreativeCar.repository;
 
 import com.example.CreativeCar.entity.Car;
-import com.example.CreativeCar.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

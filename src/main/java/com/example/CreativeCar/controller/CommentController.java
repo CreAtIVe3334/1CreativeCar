@@ -2,6 +2,7 @@ package com.example.CreativeCar.controller;
 import com.example.CreativeCar.dto.comment.CreateCommentDTO;
 import com.example.CreativeCar.entity.Comment;
 import com.example.CreativeCar.service.CommentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/comment")
+@RequiredArgsConstructor
 public class CommentController {
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
 
     @PostMapping("/{userId}/{carId}")
     public ResponseEntity<Comment> saveComment(@RequestBody CreateCommentDTO createCommentDTO,

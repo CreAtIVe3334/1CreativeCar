@@ -8,22 +8,24 @@ import com.example.CreativeCar.entity.Comment;
 import com.example.CreativeCar.entity.Users;
 //import com.example.CreativeCar.mapper.comment.CommentCreateMapper;
 import com.example.CreativeCar.repository.CommentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CommentService {
 
-    @Autowired
-    private CommentRepository commentRepository;
 
-    @Autowired
-    private CarService carService;
+    private final CommentRepository commentRepository;
 
-    @Autowired
-    private UserService userService;
+
+    private final CarService carService;
+
+
+    private final UserService userService;
 
 
 
