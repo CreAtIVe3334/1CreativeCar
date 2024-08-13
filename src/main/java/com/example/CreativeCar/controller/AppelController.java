@@ -18,7 +18,7 @@ public class AppelController {
     }
 
     @PostMapping("/check-license/{apealId}")
-    public Apeal checkLicenseAndProgress(@PathVariable Long apealId) {
-        return apealService.checkLicenseAndProgress(apealId);
+    public void checkLicenseAndProgress(@PathVariable Long apealId) {
+       // return apealService.checkLicenseAndProgress(apealId);
     }
 }

@@ -7,7 +7,9 @@ import com.example.CreativeCar.entity.Order;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.enums.CarOrder;
 import com.example.CreativeCar.enums.ExceptionMessage;
+import com.example.CreativeCar.exception.BalanceException;
 import com.example.CreativeCar.exception.NotFoundException;
+import com.example.CreativeCar.exception.SimpleException;
 import com.example.CreativeCar.mapper.car.CarUpdateMapper;
 import com.example.CreativeCar.mapper.order.OrderCreateMapper;
 import com.example.CreativeCar.mapper.order.OrderGetMapper;
@@ -50,13 +52,14 @@ public class OrderService {
         Order order = OrderCreateMapper.dtoToEntity(createOrderDTO,car,user);
         Long day = ChronoUnit.DAYS.between(createOrderDTO.getStartTime(),createOrderDTO.getEndTime()) + 1;
         Double calculatedPrice = car.get().getPrice() * day;
-        if(calculatedPrice.compareTo(user.get().getBalance())<=0){
+        if (calculatedPrice > user.get().getBalance()) {
+            throw new BalanceException(String.format(ExceptionMessage.METHOD_NOT_ALLOWED.getMessage()));
+        }
         order.setOrderAmount(calculatedPrice);
-        carService.updateCarOrder(carId,CarOrder.ORDERED);
-        orderRepository.save(order);}
-        else throw new NotFoundException(
-                String.format(ExceptionMessage.UNAUTHORIZED.getMessage())
-        );
+        userService.updateUserBalance(userId, calculatedPrice);
+        carService.updateCarOrder(carId, CarOrder.ORDERED);
+        orderRepository.save(order);
+
 
     }
 }

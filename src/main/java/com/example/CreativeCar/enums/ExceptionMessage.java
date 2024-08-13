@@ -9,7 +9,8 @@ public enum ExceptionMessage {
 
     NOT_FOUND("Not found with id: %s"),
     INVALID_REQUEST("Invalid request data"),
-    UNAUTHORIZED("Unauthorized access");
+    UNAUTHORIZED("Unauthorized access"),
+    METHOD_NOT_ALLOWED("Method not allowed");
 
     private final String message;
 }
