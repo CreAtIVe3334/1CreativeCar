@@ -1,4 +1,4 @@
-package com.example.CreativeCar.reply;
+package com.example.CreativeCar.dto.reply;
 
 public class GetReplyByCarDto {
   private   String reply;
