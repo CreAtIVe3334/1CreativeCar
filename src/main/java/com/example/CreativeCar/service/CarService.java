@@ -3,9 +3,10 @@ package com.example.CreativeCar.service;
 import com.example.CreativeCar.dto.car.CarUpdateRequestDto;
 import com.example.CreativeCar.dto.car.CreateCarRequestDto;
 import com.example.CreativeCar.entity.Car;
+import com.example.CreativeCar.entity.Users;
+import com.example.CreativeCar.enums.CarOrder;
 import com.example.CreativeCar.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.Optional;
 public class CarService {
     private final CarRepository carRepository;
 
-    public List<Car> getAllCars() {
-        return carRepository.findAllCarByStatus("A");
+    public Optional<List<Car>> getAllCars() {
+        return carRepository.findAllUnordered();
     }
 
 
@@ -40,6 +41,14 @@ public class CarService {
     public Car getCarById(Long id) {
         return carRepository.findByIdAndStatus(id,"A").orElse(null);
 
+    }
+
+    public void updateCarOrder(Long carId,CarOrder carOrder) {
+        Optional<Car> car = carRepository.findByIdAndStatus(carId,"A");
+        if (car.isPresent()) {
+            car.get().setCarOrder(carOrder);
+            carRepository.save(car.get());
+        }
     }
 
 

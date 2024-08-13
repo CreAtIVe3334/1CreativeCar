@@ -17,5 +17,4 @@ public class CreateOrderDTO {
 
     LocalDate endTime;
 
-    Double orderAmount;
 }

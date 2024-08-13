@@ -1,6 +1,5 @@
 package com.example.CreativeCar.controller;
-
-//import com.example.CreativeCar.dto.comment.CreateCommentDTO;
+import com.example.CreativeCar.dto.comment.CreateCommentDTO;
 import com.example.CreativeCar.entity.Comment;
 import com.example.CreativeCar.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +15,13 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    //@PostMapping("/{userId}/{carId}")
-    //public ResponseEntity<Comment> saveComment(@RequestBody CreateCommentDTO createCommentDTO,
-   //                                            @PathVariable Long userId,
-   //                                            @PathVariable Long carId) {
+    @PostMapping("/{userId}/{carId}")
+    public ResponseEntity<Comment> saveComment(@RequestBody CreateCommentDTO createCommentDTO,
+                                               @PathVariable Long userId,
+                                               @PathVariable Long carId) {
 
-     //   return ResponseEntity.ok(commentService.saveComment(createCommentDTO, userId, carId));
-   // }
+       return ResponseEntity.ok(commentService.saveComment(createCommentDTO, userId, carId));
+    }
 
 
     @GetMapping("/car/{carId}")  // statusu A olani verir

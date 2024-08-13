@@ -19,6 +19,6 @@ public class OrderCreateMapper {
                 .user(users.get())
                 .startTime(startTime)
                 .endTime(endTime)
-                .orderAmount(createOrderDTO.getOrderAmount()).build();
+                .build();
     }
 }
