@@ -3,16 +3,17 @@ package com.example.CreativeCar.controller;
 import com.example.CreativeCar.entity.Like;
 import com.example.CreativeCar.service.LikeService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/like")
+@RequiredArgsConstructor
 public class LikeController {
 
-    @Autowired
-    private LikeService likeService;
+    private final LikeService likeService;
 
     @PostMapping("/{userId}/{carId}")
     @Transactional
