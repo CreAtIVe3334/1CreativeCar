@@ -4,7 +4,7 @@ import com.example.CreativeCar.dto.reply.CreateReplyDTO;
 import com.example.CreativeCar.entity.Comment;
 import com.example.CreativeCar.entity.Reply;
 import com.example.CreativeCar.entity.Users;
-import com.example.CreativeCar.mapper.reply.ReplyCreateMapper;
+import com.example.CreativeCar.dto.reply.ReplyCreateMapper;
 import com.example.CreativeCar.repository.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

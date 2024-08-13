@@ -1,4 +1,4 @@
-package com.example.CreativeCar.comment;
+package com.example.CreativeCar.dto.comment;
 
 public class GetCommentByCarDTO {
     private String comment;
