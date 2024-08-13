@@ -6,6 +6,7 @@ import com.example.CreativeCar.entity.Reply;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.dto.reply.ReplyCreateMapper;
 import com.example.CreativeCar.repository.ReplyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +14,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ReplyService {
 
-    @Autowired
-    private ReplyRepository replyRepository;
+    private final ReplyRepository replyRepository;
 
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private CommentService commentService;
+    private final UserService userService;
+
+    private final CommentService commentService;
 
     public List<Reply> getAllReplies() {
         return replyRepository.findAll();

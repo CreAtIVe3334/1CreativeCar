@@ -3,7 +3,6 @@ package com.example.CreativeCar.service;
 import com.example.CreativeCar.dto.car.CarUpdateRequestDto;
 import com.example.CreativeCar.dto.car.CreateCarRequestDto;
 import com.example.CreativeCar.entity.Car;
-import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.enums.CarOrder;
 import com.example.CreativeCar.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
