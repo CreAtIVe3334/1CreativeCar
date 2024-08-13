@@ -28,6 +28,16 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public void updateUserBalance(Long userId, Double balance) {
+        Optional<Users> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            Users userEntity = user.get();
+            userEntity.setBalance(userEntity.getBalance() - balance);
+            userRepository.save(userEntity);
+        }
+
+    }
+
     public Users getUserById(Long id) {
         return userRepository.findByIdAndStatus(id, "A")
                 .stream()
