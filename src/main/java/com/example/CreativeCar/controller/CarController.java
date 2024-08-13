@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/car")
@@ -17,7 +18,7 @@ public class CarController {
     private final CarService carService;
 
     @GetMapping
-    public List<Car> getAllCars() {
+    public Optional<List<Car>> getAllCars() {
         return carService.getAllCars();
     }
 
