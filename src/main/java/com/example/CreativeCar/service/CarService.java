@@ -4,6 +4,7 @@ import com.example.CreativeCar.dto.car.CarUpdateRequestDto;
 import com.example.CreativeCar.dto.car.CreateCarRequestDto;
 import com.example.CreativeCar.entity.Car;
 import com.example.CreativeCar.enums.CarOrder;
+import com.example.CreativeCar.exception.NotFoundException;
 import com.example.CreativeCar.mapper.car.CarCreateMapper;
 import com.example.CreativeCar.mapper.car.CarUpdateMapper;
 import com.example.CreativeCar.repository.CarRepository;
@@ -30,7 +31,11 @@ public class CarService {
     }
 
     public Car getCarById(Long id) {
-        return carRepository.findByIdAndStatus(id,"A").orElse(null);
+        return carRepository.findByIdAndStatus(id,"A").orElseThrow(
+                ()-> new NotFoundException(
+                        String.format("Car with id %s not found", id)
+                )
+        );
 
     }
 

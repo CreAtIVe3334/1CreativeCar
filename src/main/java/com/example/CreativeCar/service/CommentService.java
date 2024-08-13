@@ -3,16 +3,22 @@ package com.example.CreativeCar.service;
 //import com.example.CreativeCar.dto.comment.CreateCommentDTO;
 import com.example.CreativeCar.dto.comment.CommentCreateMapper;
 import com.example.CreativeCar.dto.comment.CreateCommentDTO;
+import com.example.CreativeCar.dto.comment.GetCommentDTO;
 import com.example.CreativeCar.entity.Car;
 import com.example.CreativeCar.entity.Comment;
 import com.example.CreativeCar.entity.Users;
-//import com.example.CreativeCar.mapper.comment.CommentCreateMapper;
+import com.example.CreativeCar.exception.NotFoundException;
+import com.example.CreativeCar.mapper.comment.CommentGetMapper;
 import com.example.CreativeCar.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static com.example.CreativeCar.enums.ExceptionMessage.NOT_FOUND;
+import static java.lang.String.format;
 
 @Service
 @RequiredArgsConstructor
@@ -30,8 +36,23 @@ public class CommentService {
 
 
     public Comment getCommentById(Long id) {
-        return commentRepository.findByIdAndStatus( id);
+        return commentRepository.findByIdAndStatus(id).stream()
+                .findFirst().orElseThrow(() ->new NotFoundException(
+                        format(
+                                NOT_FOUND.getMessage(),
+                                id
+                        )));
     }
+
+    public Optional<List<GetCommentDTO>> getComments(Long userId, Long carId) {
+        Optional<List<Comment>> comments = commentRepository.findAllByCarAndUser(carId, userId);
+        return comments.map(list ->
+                list.stream()
+                        .map(CommentGetMapper::entityToDto)
+                        .collect(Collectors.toList())
+        );
+    }
+
     public Comment saveComment(CreateCommentDTO createCommentDTO, Long userId, Long carId) {
         Users user = userService.getUserById(userId);
         Car car = carService.getCarById(carId);

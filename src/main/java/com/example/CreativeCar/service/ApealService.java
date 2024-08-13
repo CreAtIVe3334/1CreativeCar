@@ -3,6 +3,7 @@ package com.example.CreativeCar.service;
 import com.example.CreativeCar.entity.Apeal;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.enums.ApealProgress;
+import com.example.CreativeCar.mapper.apeal.ApealAcceptedMapper;
 import com.example.CreativeCar.repository.ApealRepository;
 import com.example.CreativeCar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,43 +18,14 @@ public class ApealService {
 
     private final ApealRepository apealRepository;
 
-    private final UserRepository usersRepository;
+    private final UserService userService;
 
     public Apeal createApeal(Long userId) {
-        Optional<Users> userOptional = usersRepository.findById(userId);
-
-        if (userOptional.isPresent()) {
-            Users user = userOptional.get();
-            Apeal apeal = Apeal.builder()
-                    .user(user)
-                    .apealProgress(ApealProgress.ACCEPTED_0)
-                    .build();
-
-            apealRepository.save(apeal);
-            return apeal;
-        }
-        return null;
+        Optional<Users> user = Optional.ofNullable(userService.getUserById(userId));
+        Apeal apeal = ApealAcceptedMapper.dtoToEntity(user.get());
+        return apealRepository.save(apeal);
     }
 
-    public Apeal checkLicenseAndProgress(Long apealId) {
-        Optional<Apeal> apealOptional = apealRepository.findById(apealId);
-
-        if (apealOptional.isPresent()) {
-            Apeal apeal = apealOptional.get();
-            Users user = apeal.getUser();
-
-            if (isLicenseValid(user.getLicence())) {
-                apeal.setApealProgress(ApealProgress.PROGRESS_2);
-            } else {
-                apeal.setApealProgress(ApealProgress.REJECTED_1);
-            }
-
-            apealRepository.save(apeal);
-            return apeal;
-        }
-
-        return null;
-    }
 
     private boolean isLicenseValid(String license) {
         // compare mentiqi yazilmalidi

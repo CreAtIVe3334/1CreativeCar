@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MessageController {
 
+    @Autowired
     MessageSenderService messageSenderService;
 
     @PostMapping("/password-sender/{email}")

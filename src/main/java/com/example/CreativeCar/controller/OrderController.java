@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
 
+    @Autowired
     OrderService orderService;
 
     @PostMapping("/create/{userId}/{carId}")
