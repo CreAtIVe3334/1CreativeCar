@@ -3,6 +3,7 @@ package com.example.CreativeCar.controller;
 import com.example.CreativeCar.dto.reply.CreateReplyDTO;
 import com.example.CreativeCar.entity.Reply;
 import com.example.CreativeCar.service.ReplyService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +14,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/replies")
+@RequiredArgsConstructor
 public class ReplyController {
 
     private final ReplyService replyService;
-
-    @Autowired
-    public ReplyController(ReplyService replyService) {
-        this.replyService = replyService;
-    }
-
 
     @GetMapping
     public ResponseEntity<List<Reply>> getAllReplies() {

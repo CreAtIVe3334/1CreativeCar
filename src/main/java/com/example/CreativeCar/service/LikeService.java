@@ -4,21 +4,21 @@ import com.example.CreativeCar.entity.Car;
 import com.example.CreativeCar.entity.Like;
 import com.example.CreativeCar.entity.Users;
 import com.example.CreativeCar.repository.LikeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class LikeService {
-    @Autowired
-    private LikeRepository likeRepository;
 
-    @Autowired
-    private CarService carService;
+    private final LikeRepository likeRepository;
 
-    @Autowired
-    private UserService userService;
+    private final CarService carService;
+
+    private final UserService userService;
 
     public Like save(Long userId,Long carId) {
         Users user = userService.getUserById(userId);
