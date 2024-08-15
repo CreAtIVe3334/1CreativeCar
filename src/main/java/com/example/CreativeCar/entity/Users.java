@@ -17,7 +17,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Users extends CoreEntity {
     @Column(nullable = false, unique = true)
-    String username;
+    String userName;
     String name;
     String email;
     String phone;

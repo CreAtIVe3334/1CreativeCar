@@ -12,7 +12,7 @@ public class UserUpdateMapper {
                 .name(updateUserDTO.getName())
                 .balance(updateUserDTO.getBalance())
                 .licence(updateUserDTO.getLicence())
-                .username(updateUserDTO.getUsername())
+                .userName(updateUserDTO.getUsername())
                 .build();
     }
 }
