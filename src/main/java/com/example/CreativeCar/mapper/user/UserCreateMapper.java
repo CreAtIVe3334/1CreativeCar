@@ -8,7 +8,7 @@ public class UserCreateMapper {
 
     public static Users dtoToEntity(CreateUserDTO createUserDTO) {
         return Users.builder()
-                .username(createUserDTO.getUsername())
+                .userName(createUserDTO.getUsername())
                 .name(createUserDTO.getName())
                 .phone(createUserDTO.getPhone())
                 .email(createUserDTO.getEmail())

@@ -63,12 +63,16 @@ public class UserService {
     }
 
     public Users getUserByUsername(String username) {
-        Optional<Users> users = userRepository.findByUsernameAndStatus(username,"A");
+        Optional<Users> users = userRepository.findByUserNameAndStatus(username,"A");
         return users.orElse(null);
     }
 
     public Users updateUser(UpdateUserDTO updateUserDTO) {
         Users user = UserUpdateMapper.dtoToEntity(updateUserDTO);
         return userRepository.save(user);
+    }
+
+    public Users saveOneUser(Users newUser) {
+        return userRepository.save(newUser);
     }
 }

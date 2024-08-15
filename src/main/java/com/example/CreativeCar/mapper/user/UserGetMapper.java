@@ -8,6 +8,6 @@ public class UserGetMapper {
         return GetUserDTO.builder()
                 .balance(user.getBalance())
                 .name(user.getName())
-                .username(user.getUsername()).build();
+                .username(user.getUserName()).build();
     }
 }

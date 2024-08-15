@@ -2,12 +2,9 @@ package com.example.CreativeCar.service;
 
 import com.example.CreativeCar.entity.Apeal;
 import com.example.CreativeCar.entity.Users;
-import com.example.CreativeCar.enums.ApealProgress;
 import com.example.CreativeCar.mapper.apeal.ApealAcceptedMapper;
 import com.example.CreativeCar.repository.ApealRepository;
-import com.example.CreativeCar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

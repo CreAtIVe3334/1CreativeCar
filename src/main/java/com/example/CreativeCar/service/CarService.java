@@ -30,7 +30,8 @@ public class CarService {
 
     }
 
-    public Car getCarById(Long id) {
+    public Car
+    getCarById(Long id) {
         return carRepository.findByIdAndStatus(id,"A").orElseThrow(
                 ()-> new NotFoundException(
                         String.format("Car with id %s not found", id)
