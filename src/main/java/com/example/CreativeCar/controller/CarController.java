@@ -17,7 +17,7 @@ public class CarController {
 
     private final CarService carService;
 
-    @GetMapping
+    @GetMapping("/a")
     public Optional<List<Car>> getAllCars() {
         return carService.getAllCars();
     }
