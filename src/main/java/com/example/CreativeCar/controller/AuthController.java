@@ -28,6 +28,8 @@ public class AuthController {
 
     private final PasswordEncoder passwordEncoder;
 
+
+
     @PostMapping("/login")
     public String login(@RequestBody UserRequest loginRequest) {
         UsernamePasswordAuthenticationToken authToken =
@@ -37,6 +39,7 @@ public class AuthController {
         String jwtToken = tokenProvider.generateJwtToken(auth);
         return "Baerer " + jwtToken;
     }
+
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserRequest registerRequest) {
